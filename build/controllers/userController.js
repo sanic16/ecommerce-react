@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getUserProfile = exports.registerUser = exports.loginUser = void 0;
+exports.updateUserById = exports.getUserById = exports.deleteUser = exports.getUsers = exports.updateUserProfile = exports.getUserProfile = exports.logoutUser = exports.registerUser = exports.loginUser = void 0;
 const asyncHandler_1 = __importDefault(require("../middleware/asyncHandler"));
 const userModel_1 = __importDefault(require("../models/userModel"));
 const generateToken_1 = __importDefault(require("../utils/generateToken"));
@@ -67,6 +67,20 @@ exports.registerUser = (0, asyncHandler_1.default)((req, res) => __awaiter(void 
         throw new Error("Datos de usuario inválidos");
     }
 }));
+// @desc    Logout user / clear cookie
+// @route   GET /api/users/logout
+// @access  Private
+exports.logoutUser = (0, asyncHandler_1.default)((_req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    res.cookie("jwt", "", {
+        httpOnly: true,
+        expires: new Date(0),
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "none",
+    });
+    return res.status(200).json({
+        message: "Sesión cerrada",
+    });
+}));
 // @desc    Get user profile
 // @route   GET /api/users/profile
 // @access  Private
@@ -84,4 +98,52 @@ exports.getUserProfile = (0, asyncHandler_1.default)((req, res) => __awaiter(voi
         res.status(404);
         throw new Error("Usuario no encontrado");
     }
+}));
+// @desc    Update user profile
+// @route   PUT /api/users/profile
+// @access  Private
+exports.updateUserProfile = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const user = yield userModel_1.default.findById(req.user.id);
+    if (user) {
+        user.name = req.body.name || user.name;
+        user.email = req.body.email || user.email;
+        if (req.body.password) {
+            user.password = req.body.password;
+        }
+        const updateUser = yield user.save();
+        return res.json({
+            _id: updateUser._id,
+            name: updateUser.name,
+            email: updateUser.email,
+            isAdmin: updateUser.isAdmin,
+        });
+    }
+    else {
+        res.status(404);
+        throw new Error("Usuario no encontrado");
+    }
+}));
+// @desc    Get all users
+// @route   GET /api/users
+// @access  Private/Admin
+exports.getUsers = (0, asyncHandler_1.default)((_req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    return res.json({ message: "Get all users" });
+}));
+// @desc    Delete user
+// @route   DELETE /api/users/:id
+// @access  Private/Admin
+exports.deleteUser = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    return res.json({ message: `Delete user ${req.params.id}` });
+}));
+// @desc    Get user by ID
+// @route   GET /api/users/:ID
+// @access  Private/Admin
+exports.getUserById = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    return res.json({ message: `Get user ${req.params.id}` });
+}));
+// @desc    Update user
+// @route   PUT /api/users/:id
+// @access  Private/Admin
+exports.updateUserById = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    return res.json({ message: `Updated user ${req.params.id}` });
 }));

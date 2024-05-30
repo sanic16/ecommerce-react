@@ -17,7 +17,7 @@ export const protect = asyncHandler(
           isAdmin?: boolean;
         };
         const user = await User.findById(decoded.userId).select("-password");
-        req.user = { id: user?._id as string, isAdmin: decoded.isAdmin };
+        req.user = { id: user?._id as string, isAdmin: user?.isAdmin };
         return next();
       } catch (error) {
         console.error(error);
@@ -29,3 +29,15 @@ export const protect = asyncHandler(
     }
   }
 );
+
+// @desc  Admin middleware
+export const admin = (req: Request, res: Response, next: NextFunction) => {
+  console.log(req.user);
+
+  if (req.user && req.user.isAdmin) {
+    next();
+  } else {
+    res.status(401);
+    throw new Error("No autorizado como administrador");
+  }
+};

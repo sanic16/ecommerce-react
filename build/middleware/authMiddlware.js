@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.protect = void 0;
+exports.admin = exports.protect = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const asyncHandler_1 = __importDefault(require("./asyncHandler"));
 const userModel_1 = __importDefault(require("../models/userModel"));
@@ -25,7 +25,7 @@ exports.protect = (0, asyncHandler_1.default)((req, res, next) => __awaiter(void
         try {
             const decoded = jsonwebtoken_1.default.verify(token, process.env.JWT_SECRET);
             const user = yield userModel_1.default.findById(decoded.userId).select("-password");
-            req.user = { id: user === null || user === void 0 ? void 0 : user._id, isAdmin: decoded.isAdmin };
+            req.user = { id: user === null || user === void 0 ? void 0 : user._id, isAdmin: user === null || user === void 0 ? void 0 : user.isAdmin };
             return next();
         }
         catch (error) {
@@ -38,3 +38,15 @@ exports.protect = (0, asyncHandler_1.default)((req, res, next) => __awaiter(void
         throw new Error("No autorizado, token no encontrado");
     }
 }));
+// @desc  Admin middleware
+const admin = (req, res, next) => {
+    console.log(req.user);
+    if (req.user && req.user.isAdmin) {
+        next();
+    }
+    else {
+        res.status(401);
+        throw new Error("No autorizado como administrador");
+    }
+};
+exports.admin = admin;
