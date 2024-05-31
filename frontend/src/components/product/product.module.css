@@ -1,0 +1,43 @@
+.product {
+  padding: 1rem;
+  background: linear-gradient(
+    135deg,
+    var(--light-color) 85%,
+    var(--secondary-color)
+  );
+  border-radius: var(--border-radius-3);
+  box-shadow: 0 0.5rem 1rem hsla(0, 0%, var(--dark-lightness), 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product__header a {
+  color: var(--dark-color);
+}
+
+.product__image img {
+  aspect-ratio: 16/10;
+}
+
+.product__image {
+  border-radius: var(--border-radius-3);
+  overflow: hidden;
+}
+
+.product__header h5 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(
+    to right,
+    var(--black-color),
+    var(--secondary-color)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.product__body p {
+  margin-bottom: 0.7rem;
+}

@@ -1,0 +1,14 @@
+.rating {
+  text-align: left;
+}
+
+.rating span {
+  margin: 0.1rem;
+  color: gold;
+}
+
+.rating .rating__text {
+  color: var(--dark-color);
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+}
