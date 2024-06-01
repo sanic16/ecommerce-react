@@ -1,0 +1,48 @@
+.heading__page {
+  margin-bottom: 1.5rem;
+  background: linear-gradient(
+    to right,
+    var(--primary-color),
+    var(--dark-color)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  line-height: normal;
+}
+
+.payment {
+  height: calc(100vh - 10rem);
+  width: var(--form-width);
+  margin-inline: auto;
+}
+
+.payment__container {
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.form__container {
+  width: 100%;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.form__group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .payment {
+    width: 100%;
+  }
+}
