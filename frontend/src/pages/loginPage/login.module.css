@@ -3,7 +3,7 @@
   padding: 0;
   width: var(--form-width);
   margin-inline: auto;
-  height: calc(100vh - 10rem);
+  min-height: calc(100vh - 10rem);
   display: grid;
   place-items: center;
 }

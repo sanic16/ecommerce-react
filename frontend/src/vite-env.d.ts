@@ -8,7 +8,7 @@ type Product = {
   brand: string;
   category: string;
   description: string;
-  reviews: Review[];
+  // reviews: Review[];
   rating: number;
   numReviews: number;
   price: number;
@@ -60,3 +60,9 @@ type CartState = {
   paymentMethod: PaymentMethod;
   shippingAddress: ShippingAddress;
 };
+
+interface ApiError {
+  data: {
+    message: string;
+  };
+}

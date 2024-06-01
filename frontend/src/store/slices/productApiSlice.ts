@@ -13,10 +13,10 @@ const productsApiSlice = apiSlice.injectEndpoints({
       query: (id) => ({
         url: `${PRODUCTS_URL}/${id}`,
       }),
-      providesTags: (_result, _error, id) => [
-        { type: "Products", id: "LIST" },
-        { type: "Products", id: id },
-      ],
+      // providesTags: (_result, _error, id) => [
+      //   { type: "Products", id: "LIST" },
+      //   { type: "Products", id: id },
+      // ],
     }),
   }),
 });

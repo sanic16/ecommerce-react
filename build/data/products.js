@@ -2,55 +2,55 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const products = [
     {
-        name: "Airpods Wireless Bluetooth Headphones",
-        image: "https://proshop-gt.s3.amazonaws.com/public/products/airpods.jpg", // '/images/airpods.jpg
-        description: "Bluetooth technology lets you connect it with compatible devices wirelessly High-quality AAC audio offers immersive listening experience Built-in microphone allows you to take calls while working",
-        brand: "Apple",
-        category: "Electronics",
+        name: "Pulpo común para aficionados",
+        image: "https://proshop-gt.s3.amazonaws.com/public/products/pulpo.jpg", // '/images/airpods.jpg
+        description: "Pulpo común para aficionados, ideal para acuarios pequeños y medianos, fácil de cuidar y alimentar.",
+        brand: "Pulpos",
+        category: "invertebrados",
         price: 89.99,
         countInStock: 10,
         rating: 4.5,
         numReviews: 12,
     },
     {
-        name: "iPhone 11 Pro 256GB Memory",
-        image: "https://proshop-gt.s3.amazonaws.com/public/products/phone.jpg", // '/images/phone.jpg
-        description: "Introducing the iPhone 11 Pro. A transformative triple-camera system that adds tons of capability without complexity. An unprecedented leap in battery life",
-        brand: "Apple",
-        category: "Electronics",
+        name: "Camarón fantasma",
+        image: "https://proshop-gt.s3.amazonaws.com/public/products/ghostShrimp.jpg", // '/images/phone.jpg
+        description: "Camarón fantasma, es un crustáceo pequeño y fácil de cuidar, ideal para acuarios pequeños y medianos. Muy buen limpiador de acuarios.",
+        brand: "Invertebrados",
+        category: "invertebrados",
         price: 599.99,
         countInStock: 7,
         rating: 4.0,
         numReviews: 8,
     },
     {
-        name: "Cannon EOS 80D DSLR Camera",
-        image: "https://proshop-gt.s3.amazonaws.com/public/products/camera.jpg", // '/images/camera.jpg
-        description: "Characterized by versatile imaging specs, the Canon EOS 80D further clarifies itself using a pair of robust focusing systems and an intuitive design",
-        brand: "Cannon",
-        category: "Electronics",
+        name: "Pez Dorado",
+        image: "https://proshop-gt.s3.amazonaws.com/public/products/goldenFish.jpg", // '/images/camera.jpg
+        description: "Muy popular en acuarios, el pez dorado es un pez de agua dulce, fácil de cuidar y alimentar. Ideal para acuarios pequeños y medianos.",
+        brand: "goldFish",
+        category: "Peces",
         price: 929.99,
         countInStock: 5,
         rating: 3,
         numReviews: 12,
     },
     {
-        name: "Sony Playstation 4 Pro White Version",
-        image: "https://proshop-gt.s3.amazonaws.com/public/products/playstation.jpg", // '/images/playstation.jpg
-        description: "The ultimate home entertainment center starts with PlayStation. Whether you are into gaming, HD movies, television, music",
-        brand: "Sony",
-        category: "Electronics",
+        name: "Pez Guppy",
+        image: "https://proshop-gt.s3.amazonaws.com/public/products/guppyFish.jpg", // '/images/playstation.jpg
+        description: "El pez guppy es ideal para personas que se inician en el mundo de los acuarios, fácil de cuidar y alimentar. Ideal para acuarios pequeños y medianos.",
+        brand: "Guppy",
+        category: "Peces",
         price: 399.99,
         countInStock: 11,
         rating: 5,
         numReviews: 12,
     },
     {
-        name: "Logitech G-Series Gaming Mouse",
-        image: "https://proshop-gt.s3.amazonaws.com/public/products/mouse.jpg", // '/images/mouse.jpg
-        description: "Get a better handle on your games with this Logitech LIGHTSYNC gaming mouse. The six programmable buttons allow customization for a smooth playing experience",
-        brand: "Logitech",
-        category: "Electronics",
+        name: "Caracol manzana",
+        image: "https://proshop-gt.s3.amazonaws.com/public/products/appleSnail.jpg", // '/images/mouse.jpg
+        description: "El caracol manzana es un molusco de agua dulce, se alimenta de algas y restos de comida, se recomienda tener un acuario con tapa ya que pueden salir del agua.",
+        brand: "AppleSnail",
+        category: "invertebrados",
         price: 49.99,
         countInStock: 7,
         rating: 3.5,
@@ -58,7 +58,7 @@ const products = [
     },
     {
         name: "Amazon Echo Dot 3rd Generation",
-        image: "https://proshop-gt.s3.amazonaws.com/public/products/alexa.jpg", // '/images/alexa.jpg
+        image: "https://proshop-gt.s3.amazonaws.com/public/products/bettaFish.jpg", // '/images/alexa.jpg
         description: "Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space",
         brand: "Amazon",
         category: "Electronics",

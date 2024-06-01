@@ -9,7 +9,7 @@ import { IoColorWand } from "react-icons/io5";
 
 const Header = () => {
   const { cartItems } = useSelector((state: { cart: CartState }) => state.cart);
-  const { userInfo } = useSelector((state: { userInfo: Auth }) => state);
+  const userInfo = useSelector((state: { userInfo: Auth }) => state.userInfo);
   const qty = cartItems.reduce((acc, item) => acc + item.qty, 0);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ const Header = () => {
   };
 
   return (
-    <nav className={classes.nav}>
+    <nav className={classes.nav} id="top">
       <div className={`container ${classes.nav__container}`}>
         <div className={classes.nav__logo}>
           <Link to="/">Coral y Mar</Link>

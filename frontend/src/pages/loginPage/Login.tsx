@@ -16,7 +16,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const [login, { isLoading }] = useLoginMutation();
-  const { userInfo } = useSelector((state: { userInfo: Auth }) => state);
+  const userInfo = useSelector((state: { userInfo: Auth }) => state.userInfo);
 
   const { search } = useLocation();
 

@@ -1,0 +1,108 @@
+.product {
+  min-height: calc(100vh - 10rem);
+}
+
+.product__wrapper {
+  height: 100%;
+}
+
+.loader__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.product__details {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(1, auto);
+  grid-template-areas: "col1 col1 col1 col2 col2 col2 col3 col3";
+  align-items: start;
+  margin-top: 3rem;
+  gap: 2rem;
+}
+
+.product__details-col1 {
+  grid-area: col1;
+}
+
+.product__details-col2 {
+  grid-area: col2;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border: 1px solid hsla(var(--primary-hue), 0%, var(--dark-lightness), 0.5);
+  box-shadow: 0 0 0.5rem
+    hsla(var(--primary-hue), 0%, var(--dark-lightness), 0.5);
+}
+
+.product__details-col3 {
+  grid-area: col3;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border: 1px solid hsla(var(--primary-hue), 0%, var(--dark-lightness), 0.5);
+  box-shadow: 0 0 0.5rem
+    hsla(var(--primary-hue), 0%, var(--dark-lightness), 0.5);
+}
+
+.product__details-col2 > * {
+  padding: 1rem 0;
+}
+
+.product__details-col2 > *:not(:first-child) {
+  border-top: 1px solid hsla(var(--primary-hue), 0%, var(--dark-lightness), 0.5);
+}
+
+.product__details-col3 > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.product__details .qty {
+  width: fit-content;
+  padding-block: 0.35rem;
+  padding-inline: 0.5rem;
+  background-color: var(--primary-color);
+  border-radius: var(--border-radius-2);
+  color: #fff;
+}
+
+.product__details .qty:hover {
+  background-color: var(--secondary-color);
+}
+
+.product__details-col3 > div:not(:first-child) {
+  border-top: 1px solid hsla(var(--primary-hue), 0%, var(--dark-lightness), 0.5);
+}
+
+@media screen and (max-width: 1024px) {
+  .product__details {
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas:
+      "col2 col2 col2 col2 col2 col3 col3 col3"
+      "col2 col2 col2 col2 col2    .    .    .   "
+      "col1 col1 col1 col1 .    .    .    .";
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .product__details {
+    grid-template-areas:
+      "col2 col2 col2 col2 col2 col2 col2 col2"
+      "col3 col3 col3 col3 col3 col3 col3 col3"
+      "col1 col1 col1 col1 col1    .    .    .";
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .product__details {
+    grid-template-areas:
+      "col2 col2 col2 col2 col2 col2 col2 col2"
+      "col3 col3 col3 col3 col3 col3 col3 col3"
+      "col1 col1 col1 col1 col1 col1 col1 col1";
+  }
+}

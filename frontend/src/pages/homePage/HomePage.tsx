@@ -3,6 +3,7 @@ import Product from "../../components/product/Product";
 import classes from "./homePage.module.css";
 const HomePage = () => {
   const { data: products, isLoading, isError } = useGetProductsQuery();
+
   return (
     <section>
       <h1>Últimos productos</h1>
