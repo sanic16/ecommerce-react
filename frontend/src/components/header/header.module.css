@@ -23,7 +23,7 @@
   align-items: center;
 }
 
-.nav__menu a {
+.nav__menu li a {
   color: #fff;
   padding: 0.5rem 1rem;
   display: flex;
@@ -31,7 +31,7 @@
   gap: 0.4rem;
 }
 
-.nav__menu button {
+.nav__menu .nav__theme {
   background-color: transparent;
   color: #fff;
   padding: 0.5rem 1rem;
@@ -49,4 +49,76 @@
 
 .nav__toggle-btn {
   display: none;
+}
+
+.nav__menu-user {
+  position: relative;
+}
+
+.nav__menu-user-menu {
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  background-color: var(--primary-color);
+  display: none;
+}
+
+.nav__menu-user:hover .nav__menu-user-menu {
+  display: block;
+}
+
+.nav__menu-user-menu a {
+  color: #fff;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+.nav__menu-user-menu a:hover {
+  background-color: var(--secondary-color);
+  color: var(--dark-color);
+}
+
+.nav__menu-user-menu button {
+  font-size: 0.9rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .nav__menu {
+    position: absolute;
+    top: -100vh;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 5rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10rem;
+    gap: 1rem;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.9);
+    transition: var(--transition);
+  }
+
+  .nav__toggle-btn {
+    display: grid;
+    font-size: 1.5rem;
+    background-color: transparent;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .nav__menu.active {
+    top: 5rem;
+  }
+}
+
+@media screen and (max-height: 600px) {
+  .nav__menu {
+    padding-top: 1rem;
+  }
 }

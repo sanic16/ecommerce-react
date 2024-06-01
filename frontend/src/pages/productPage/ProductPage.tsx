@@ -28,12 +28,7 @@ const ProductPage = () => {
     if (!product) return;
     dispatch(
       addToCart({
-        _id: product._id,
-        name: product.name,
-        image: product.image,
-        price: product.price,
-        numReviews: product.numReviews,
-        rating: product.rating,
+        ...product,
         qty,
       })
     );

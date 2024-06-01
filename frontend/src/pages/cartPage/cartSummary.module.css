@@ -1,0 +1,26 @@
+.cart__bill {
+  padding: 1rem;
+  background-color: var(--light-color);
+  border-radius: var(--border-radius-2);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.cart__bill h3 {
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, var(--dark-color), var(--primary-color));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.cart__bill-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart__bill button {
+  width: 100%;
+}

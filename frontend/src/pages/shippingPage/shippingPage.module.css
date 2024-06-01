@@ -1,0 +1,12 @@
+.shipping {
+  height: 100%;
+  width: var(--form-width);
+  margin-inline: auto;
+  height: calc(100vh - 10rem);
+}
+
+.shipping__container {
+  height: 100%;
+  display: grid;
+  place-items: center;
+}

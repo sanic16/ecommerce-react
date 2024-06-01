@@ -6,7 +6,7 @@ const HomePage = () => {
 
   return (
     <section>
-      <h1>Últimos productos</h1>
+      <h2 className={classes.heading__page}>Últimos productos</h2>
       {isLoading ? (
         <p>Cargando...</p>
       ) : isError || !products ? (

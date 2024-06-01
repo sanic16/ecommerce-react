@@ -14,12 +14,16 @@ import store from "./store/store.ts";
 import LoginPage from "./pages/loginPage/Login.tsx";
 import RegisterPage from "./pages/registerPage/RegisterPage.tsx";
 import ProductPage from "./pages/productPage/ProductPage.tsx";
+import CartPage from "./pages/cartPage/CartPage.tsx";
+import ShippingPage from "./pages/shippingPage/ShippingPage.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index path="/" element={<HomePage />} />
       <Route path="/product/:id" element={<ProductPage />} />
+      <Route path="/cart" element={<CartPage />} />
+      <Route path="/shipping" element={<ShippingPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
     </Route>

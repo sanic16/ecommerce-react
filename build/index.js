@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 5000;
 if (process.env.NODE_ENV === "development") {
     app.use((0, cors_1.default)({
         credentials: true,
-        origin: "http://localhost:5173",
+        origin: ["http://localhost:5173", "http://192.168.1.35:5173"],
     }));
 }
 app.use(express_1.default.json());

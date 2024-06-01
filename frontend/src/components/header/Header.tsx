@@ -1,4 +1,4 @@
-import { FaBars, FaShoppingCart, FaUser } from "react-icons/fa";
+import { FaBars, FaShoppingCart, FaTimes, FaUser } from "react-icons/fa";
 import classes from "./header.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -6,14 +6,22 @@ import { useLogoutMutation } from "../../store/slices/authApiSlice";
 import { logout } from "../../store/slices/authSlice";
 import { toast } from "react-toastify";
 import { IoColorWand } from "react-icons/io5";
+import { useState } from "react";
 
 const Header = () => {
   const { cartItems } = useSelector((state: { cart: CartState }) => state.cart);
-  const userInfo = useSelector((state: { userInfo: Auth }) => state.userInfo);
+  const { userInfo } = useSelector(
+    (state: { auth: { userInfo: Auth } }) => state.auth
+  );
   const qty = cartItems.reduce((acc, item) => acc + item.qty, 0);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [logoutMutation] = useLogoutMutation();
+  const [isOpened, setIsOpened] = useState(false);
+
+  const closeMenu = () => {
+    setIsOpened(false);
+  };
 
   const logoutHandler = async () => {
     try {
@@ -32,7 +40,7 @@ const Header = () => {
         <div className={classes.nav__logo}>
           <Link to="/">Coral y Mar</Link>
         </div>
-        <ul className={classes.nav__menu}>
+        <ul className={`${classes.nav__menu} ${isOpened && classes.active}`}>
           <li>
             <button className={classes.nav__theme}>
               <IoColorWand />
@@ -57,21 +65,30 @@ const Header = () => {
                   <li>
                     <Link to="/profile">Perfil</Link>
                   </li>
-                  <li onClick={logoutHandler}>Cerrar sesión</li>
+                  <li onClick={logoutHandler}>
+                    <a href={"#"}>Cerrar Sesión</a>
+                  </li>
                 </ul>
               </div>
             </li>
           ) : (
             <li>
-              <Link to="/login" className={classes["nav__menu-item"]}>
+              <Link
+                to="/login"
+                className={classes["nav__menu-item"]}
+                onClick={closeMenu}
+              >
                 <FaUser /> Iniciar sesión
               </Link>
             </li>
           )}
         </ul>
 
-        <button className={classes["nav__toggle-btn"]}>
-          <FaBars />
+        <button
+          className={classes["nav__toggle-btn"]}
+          onClick={() => setIsOpened((prev) => !prev)}
+        >
+          {isOpened ? <FaTimes /> : <FaBars />}
         </button>
       </div>
     </nav>

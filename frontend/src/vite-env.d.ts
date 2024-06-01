@@ -8,7 +8,7 @@ type Product = {
   brand: string;
   category: string;
   description: string;
-  // reviews: Review[];
+  reviews: string[];
   rating: number;
   numReviews: number;
   price: number;
@@ -38,7 +38,7 @@ type RegisterUser = LoginUser & {
   name: string;
 };
 
-type CartItem = ProductCard & {
+type CartItem = Product & {
   qty: number;
 };
 

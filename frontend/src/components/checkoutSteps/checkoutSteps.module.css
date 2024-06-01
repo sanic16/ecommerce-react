@@ -1,0 +1,27 @@
+.checkout__steps {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.checkout__steps button {
+  color: var(--dark-color);
+  background-color: var(--light-color);
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius-1);
+  cursor: not-allowed;
+  font-weight: 500;
+}
+
+.checkout__steps button.active {
+  background-color: var(--primary-color);
+  color: #fff;
+  cursor: pointer;
+}
+
+.checkout__steps button.active:hover {
+  background-color: var(--secondary-color);
+}
