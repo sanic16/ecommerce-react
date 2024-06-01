@@ -44,9 +44,9 @@ type CartItem = Product & {
 
 type ShippingAddress = {
   address: string;
-  city: string;
-  postalCode: string;
-  country: string;
+  municipality: string;
+  department: string;
+  zipcode: string;
 };
 
 type PaymentMethod = "PayPal" | "Banrural" | "G&T" | "BAC" | "BI";

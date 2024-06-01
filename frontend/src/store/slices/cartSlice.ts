@@ -12,9 +12,9 @@ const initialState: CartState = localStorage.getItem("cart")
       paymentMethod: "PayPal",
       shippingAddress: {
         address: "",
-        city: "",
-        postalCode: "",
-        country: "",
+        municipality: "",
+        department: "",
+        zipcode: "",
       },
     };
 

@@ -10,3 +10,34 @@
   display: grid;
   place-items: center;
 }
+
+.form__container {
+  width: 100%;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.heading__page {
+  margin-bottom: 1.5rem;
+  background: linear-gradient(
+    to right,
+    var(--primary-color),
+    var(--dark-color)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  line-height: normal;
+}
+
+@media screen and (max-width: 1024px) {
+  .shipping {
+    width: 100%;
+  }
+}
