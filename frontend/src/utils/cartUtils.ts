@@ -11,7 +11,7 @@ export const updateCart = (state: CartState) => {
   state.taxPrice = Number((0.15 * state.itemsPrice).toFixed(2));
   state.totalPrice =
     Number(state.itemsPrice) +
-    Number(state.shippingAddress) +
+    Number(state.shippingPrice) +
     Number(state.taxPrice);
   localStorage.setItem("cart", JSON.stringify(state));
 };

@@ -9,10 +9,10 @@ const generateToken = (res, userId) => {
         userId: userId,
     }, process.env.JWT_SECRET, { expiresIn: "8h" });
     res.cookie("jwt", token, {
-        httpOnly: true,
+        httpOnly: false,
         maxAge: 1000 * 60 * 60 * 8,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "none",
+        secure: false,
+        sameSite: "strict",
     });
 };
 exports.default = generateToken;

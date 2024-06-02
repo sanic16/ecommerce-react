@@ -7,7 +7,7 @@ interface Review {
   comment: string;
 }
 
-interface Product extends Document {
+interface Product extends mongoose.Document {
   user: mongoose.Schema.Types.ObjectId;
   name: string;
   image: string;

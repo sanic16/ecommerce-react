@@ -10,6 +10,7 @@ const cors_1 = __importDefault(require("cors"));
 const db_1 = __importDefault(require("./config/db"));
 const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
 const productRoutes_1 = __importDefault(require("./routes/productRoutes"));
+const orderRoutes_1 = __importDefault(require("./routes/orderRoutes"));
 const errorMiddleware_1 = require("./middleware/errorMiddleware");
 dotenv_1.default.config();
 (0, db_1.default)();
@@ -27,6 +28,8 @@ app.use(express_1.default.urlencoded({ extended: true }));
 app.use((0, cookie_parser_1.default)());
 app.use("/api/users", userRoutes_1.default);
 app.use("/api/products", productRoutes_1.default);
+app.use("/api/orders", orderRoutes_1.default);
+// React build
 app.use(errorMiddleware_1.notFound);
 app.use(errorMiddleware_1.errorHandler);
 app.listen(PORT, () => {

@@ -9,9 +9,11 @@ const PaymentPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { shippingAddress, paymentMethod: payment } = useSelector(
-    (state: { cart: CartState }) => state.cart
-  );
+  const {
+    shippingAddress,
+    paymentMethod: payment,
+    cartItems,
+  } = useSelector((state: { cart: CartState }) => state.cart);
 
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>(payment);
 
@@ -23,13 +25,15 @@ const PaymentPage = () => {
       !shippingAddress.zipcode
     ) {
       navigate("/shipping");
+    } else if (cartItems.length === 0) {
+      navigate("/cart");
     }
-  }, [shippingAddress, navigate]);
+  }, [shippingAddress, cartItems, navigate]);
 
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(savePaymentMethod(paymentMethod));
-    navigate("/shipping");
+    navigate("/placeorder");
   };
 
   return (

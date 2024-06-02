@@ -66,3 +66,92 @@ interface ApiError {
     message: string;
   };
 }
+
+type OrderItems = {
+  name: string;
+  qty: number;
+  image: string;
+  price: number;
+  product: string;
+}[];
+
+type ShippingAddress = {
+  address: string;
+  municipalty: string;
+  department: string;
+  zipcode: string;
+};
+
+type PaymentMethod = string;
+
+type Payment = {
+  orderItems: OrderItems;
+  shippingAddress: ShippingAddress;
+  paymentMethod: PaymentMethod;
+  itemsPrice: number;
+  taxPrice: number;
+  shippingPrice: number;
+  totalPrice: number;
+};
+
+type PaymentResult = {
+  __v: number;
+  _id: string;
+  createdAt: string;
+  isDelivered: boolean;
+  isPaid: boolean;
+  itemsPrice: number;
+  orderItems: {
+    _id: string;
+    image: string;
+    name: string;
+    price: number;
+    product: string;
+    qty: number;
+  }[];
+  paymentMethod: string;
+  shippingAddress: {
+    address: string;
+    department: string;
+    municipalty: string;
+    zipcode: string;
+  };
+  shippingPrice: number;
+  taxPrice: number;
+  totalPrice: number;
+  updatedAt: string;
+  user: string;
+};
+
+type Order = {
+  shippingAddress: {
+    address: string;
+    municipality: string;
+    department: string;
+    zipcode: string;
+  };
+  _id: string;
+  user: {
+    _id: string;
+    name: string;
+    email: string;
+  };
+  orderItems: {
+    name: string;
+    qty: number;
+    image: string;
+    price: number;
+    product: string;
+    _id: string;
+  }[];
+  paymentMethod: "PayPal" | "Banrural" | "G&T" | "BAC" | "BI";
+  itemsPrice: number;
+  taxPrice: number;
+  shippingPrice: number;
+  totalPrice: number;
+  isPaid: boolean;
+  isDelivered: boolean;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+};

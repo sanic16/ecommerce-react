@@ -5,7 +5,9 @@ import cors from "cors";
 import connectDB from "./config/db";
 import userRoutes from "./routes/userRoutes";
 import productRoutes from "./routes/productRoutes";
+import orderRoutes from "./routes/orderRoutes";
 import { errorHandler, notFound } from "./middleware/errorMiddleware";
+import path from "path";
 
 dotenv.config();
 connectDB();
@@ -31,6 +33,9 @@ app.use(cookieParser());
 
 app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes);
+app.use("/api/orders", orderRoutes);
+
+// React build
 
 app.use(notFound);
 app.use(errorHandler);

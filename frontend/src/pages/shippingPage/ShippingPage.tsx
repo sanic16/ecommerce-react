@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { saveShippingAddress } from "../../store/slices/cartSlice";
 import { useNavigate } from "react-router-dom";
@@ -9,9 +9,15 @@ import CheckoutSteps from "../../components/checkoutSteps/CheckoutSteps";
 const ShippingPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { shippingAddress } = useSelector(
+  const { shippingAddress, cartItems } = useSelector(
     (state: { cart: CartState }) => state.cart
   );
+
+  useEffect(() => {
+    if (cartItems.length === 0) {
+      navigate("/cart");
+    }
+  }, [cartItems, navigate]);
 
   const [address, setAddress] = useState<ShippingAddress>(
     shippingAddress.address
