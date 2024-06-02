@@ -12,6 +12,7 @@ const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
 const productRoutes_1 = __importDefault(require("./routes/productRoutes"));
 const orderRoutes_1 = __importDefault(require("./routes/orderRoutes"));
 const errorMiddleware_1 = require("./middleware/errorMiddleware");
+const path_1 = __importDefault(require("path"));
 dotenv_1.default.config();
 (0, db_1.default)();
 const app = (0, express_1.default)();
@@ -29,7 +30,15 @@ app.use((0, cookie_parser_1.default)());
 app.use("/api/users", userRoutes_1.default);
 app.use("/api/products", productRoutes_1.default);
 app.use("/api/orders", orderRoutes_1.default);
-// React build
+app.get("/api/config/paypal", (_req, res) => {
+    res.send({
+        clientId: process.env.PAYPAL_CLIENT_ID,
+    });
+});
+app.use(express_1.default.static(path_1.default.join(__dirname, "/react")));
+app.get("*", (_req, res) => {
+    res.sendFile(path_1.default.join(__dirname, "/react/index.html"));
+});
 app.use(errorMiddleware_1.notFound);
 app.use(errorMiddleware_1.errorHandler);
 app.listen(PORT, () => {

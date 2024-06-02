@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "tsc": "tsc",
-    "build": "tsc",
+    "build:server": "tsc",
+    "build:client": "npm run build --prefix frontend && mv frontend/dist build/react",
+    "build:prod": "rm -rf ./build && npm run build:server && npm run build:client",
     "start": "node ./build/index.js",
     "dev": "concurrently \"npx tsc -w\" \"nodemon ./build/index.js \" ",
     "data:import": "npm run build && node ./build/seeder.js",

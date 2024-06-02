@@ -153,5 +153,7 @@ type Order = {
   isDelivered: boolean;
   createdAt: string;
   updatedAt: string;
+  deliveredAt?: string;
+  paidAt?: string;
   __v: number;
 };

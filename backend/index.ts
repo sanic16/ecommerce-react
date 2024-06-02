@@ -35,7 +35,16 @@ app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/orders", orderRoutes);
 
-// React build
+app.get("/api/config/paypal", (_req, res) => {
+  res.send({
+    clientId: process.env.PAYPAL_CLIENT_ID,
+  });
+});
+
+app.use(express.static(path.join(__dirname, "/react")));
+app.get("*", (_req, res) => {
+  res.sendFile(path.join(__dirname, "/react/index.html"));
+});
 
 app.use(notFound);
 app.use(errorHandler);

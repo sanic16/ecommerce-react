@@ -1,11 +1,13 @@
 import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import CheckoutSteps from "../../components/checkoutSteps/CheckoutSteps";
 import classes from "./placerOrder.module.css";
 import { useCreateOrderMutation } from "../../store/slices/ordersApiSlice";
 import { toast } from "react-toastify";
 import { clearCartItems } from "../../store/slices/cartSlice";
+import Summary from "../../components/summary/Summary";
+import ProductsList from "../../components/productsList/ProductsList";
 
 const PlaceOrder = () => {
   const cart = useSelector((state: { cart: CartState }) => state.cart);
@@ -22,9 +24,6 @@ const PlaceOrder = () => {
     } else if (!cart.paymentMethod) {
       navigate("/payment");
     }
-    // if (cart.cartItems.length === 0) {
-    //   navigate("/cart");
-    // }
   }, [cart, navigate]);
 
   const [createOrder, { isLoading }] = useCreateOrderMutation();
@@ -76,65 +75,16 @@ const PlaceOrder = () => {
               {cart.paymentMethod}
             </p>
           </div>
-          <div className={classes.items}>
-            <h3>Lista de productos</h3>
-            <div className={classes.products}>
-              {cart.cartItems.map((item) => (
-                <div key={item._id} className={classes.product}>
-                  <div className={classes.img}>
-                    <img src={item.image} alt={item.name} />
-                  </div>
-                  <div className={classes.product__info}>
-                    <div>
-                      <Link to={`/product/${item._id}`}>{item.name}</Link>
-                    </div>
-                    <div>
-                      {item.qty} x Q{item.price} = Q
-                      {(item.qty * item.price).toFixed(2)}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <ProductsList orderItems={cart.cartItems} />
         </div>
-        <div className={classes.summary}>
-          <h3>Resumen de la orden</h3>
-          <div>
-            <div>
-              <strong>Productos</strong>
-              <span>Q{cart.itemsPrice.toFixed(2)}</span>
-            </div>
-          </div>
-          <div>
-            <div>
-              <strong>Envío</strong>
-              <span>Q{cart.shippingPrice.toFixed(2)}</span>
-            </div>
-          </div>
-          <div>
-            <div>
-              <strong>Impuestos</strong>
-              <span>Q{cart.taxPrice.toFixed(2)}</span>
-            </div>
-          </div>
-          <div>
-            <div>
-              <strong>Total</strong>
-              <span>Q{cart.totalPrice.toFixed(2)}</span>
-            </div>
-          </div>
-          <div>
-            <button
-              className="btn btn-primary"
-              type="submit"
-              onClick={placeOrderHandler}
-              disabled={isLoading}
-            >
-              {isLoading ? "Procesando..." : "Realizar pedido"}
-            </button>
-          </div>
-        </div>
+        <Summary
+          itemsPrice={cart.itemsPrice}
+          shippingPrice={cart.shippingPrice}
+          taxPrice={cart.taxPrice}
+          totalPrice={cart.totalPrice}
+          isLoading={isLoading}
+          onSubmit={placeOrderHandler}
+        />
       </div>
     </section>
   );

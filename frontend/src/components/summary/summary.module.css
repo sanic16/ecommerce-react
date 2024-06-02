@@ -1,0 +1,15 @@
+.summary {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--dark-color);
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid hsla(var(--primary-hue), 0%, var(--dark-lightness), 0.5);
+  box-shadow: 0 0 0.5rem
+    hsla(var(--primary-hue), 0%, var(--dark-lightness), 0.5);
+}
+
+.summary div div {
+  display: flex;
+  justify-content: space-between;
+}

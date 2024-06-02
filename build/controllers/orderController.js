@@ -64,23 +64,39 @@ const getOrderById = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0,
 }));
 exports.getOrderById = getOrderById;
 //@desc     Update order to paid
-//@route    POST /api/orders/:id/pay
+//@route    PUT /api/orders/:id/pay
 //@access   Private
 const updateOrderToPaid = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.send("update order to paid");
+    const order = yield orderModel_1.default.findById(req.params.id);
+    if (order) {
+        order.isPaid = true;
+        order.paidAt = new Date();
+        order.paymentResult = {
+            id: req.body.id,
+            status: req.body.status,
+            update_time: req.body.update_time,
+            email_address: req.body.payer.email_address,
+        };
+        const updateOrder = yield order.save();
+        return res.status(200).json(updateOrder);
+    }
+    else {
+        res.status(404);
+        throw new Error("Orden no encontrada");
+    }
 }));
 exports.updateOrderToPaid = updateOrderToPaid;
 //@desc     Update order to delivered
 //@route    POST /api/orders/:id/deliver
 //@access   Private/Admin
-const updateOrderToDelivered = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const updateOrderToDelivered = (0, asyncHandler_1.default)((_req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.send("update order to delivered");
 }));
 exports.updateOrderToDelivered = updateOrderToDelivered;
 // @desc    Get all orders
 // @route   GET /api/orders
 // @access  Private/Admin
-const getOrders = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const getOrders = (0, asyncHandler_1.default)((_req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.send("get orders");
 }));
 exports.getOrders = getOrders;
