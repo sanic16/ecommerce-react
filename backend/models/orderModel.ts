@@ -32,7 +32,7 @@ interface IOrder extends mongoose.Document {
   deliveredAt: Date;
 }
 
-const orderSchema: mongoose.Schema<IOrder> = new mongoose.Schema<IOrder>(
+const orderSchema: mongoose.Schema<IOrder> = new mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,

@@ -30,6 +30,12 @@ type UserInfo = {
 };
 type Auth = UserInfo | null;
 
+type UserUpdate = {
+  name?: string;
+  email?: string;
+  password?: string;
+};
+
 type LoginUser = {
   email: string;
   password: string;

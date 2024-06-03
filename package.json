@@ -9,8 +9,8 @@
     "build:prod": "rm -rf ./build && npm run build:server && npm run build:client",
     "start": "node ./build/index.js",
     "dev": "concurrently \"npx tsc -w\" \"nodemon ./build/index.js \" ",
-    "data:import": "npm run build && node ./build/seeder.js",
-    "data:destroy": "npm run build && node ./build/seeder.js -d"
+    "data:import": "npm run build:server && node ./build/seeder.js",
+    "data:destroy": "npm run build:server && node ./build/seeder.js -d"
   },
   "keywords": [],
   "author": "",

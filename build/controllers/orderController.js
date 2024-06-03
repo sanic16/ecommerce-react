@@ -45,8 +45,10 @@ exports.addOrderItems = addOrderItems;
 // @route   GET /api/orders/myorders
 // @access  Private
 const getMyOrders = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const orders = yield orderModel_1.default.find({ user: req.user.id });
-    res.status(200).json(orders);
+    const orders = yield orderModel_1.default.find({
+        user: req.user.id,
+    });
+    return res.status(200).json(orders);
 }));
 exports.getMyOrders = getMyOrders;
 // @desc    Get order by ID

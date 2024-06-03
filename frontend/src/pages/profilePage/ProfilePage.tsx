@@ -1,14 +1,18 @@
 import classes from "./profile.module.css";
 import Heading from "../../components/heading/Heading";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useGetMyOrdersQuery } from "../../store/slices/ordersApiSlice";
+import { useUpdateProfileMutation } from "../../store/slices/authApiSlice";
 import Loader from "../../components/loader/Loader";
 import Message from "../../components/message/Message";
 import { FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { setCredentials } from "../../store/slices/authSlice";
 
 const ProfilePage = () => {
+  const dispatch = useDispatch();
   const { userInfo } = useSelector(
     (state: { auth: { userInfo: Auth } }) => state.auth
   );
@@ -20,6 +24,8 @@ const ProfilePage = () => {
     confirmPassword: "",
   });
 
+  const [updateProfile, { isLoading: loadingUpdate }] =
+    useUpdateProfileMutation();
   const { data: orders, isLoading, isError } = useGetMyOrdersQuery();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,13 +35,32 @@ const ProfilePage = () => {
     }));
   };
 
+  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (userData.password !== userData.confirmPassword) {
+      toast.error("Las contraseñas no coinciden");
+    } else {
+      try {
+        const res = await updateProfile({
+          name: userData.name,
+          email: userData.email,
+          password: userData.password,
+        }).unwrap();
+        dispatch(setCredentials(res));
+        toast.success("Perfil actualizado");
+      } catch (error) {
+        toast.error("Error al actualizar el perfil");
+      }
+    }
+  };
+
   return (
     <section className={classes.profile}>
       <Heading>Mi perfil</Heading>
       <div className={classes.profile__container}>
         <div className={classes.profile__info}>
           <h3>Información de usuario</h3>
-          <form>
+          <form onSubmit={submitHandler}>
             <div className={classes.profile__formGroup}>
               <label htmlFor="name">Nombre</label>
               <input
@@ -82,7 +107,9 @@ const ProfilePage = () => {
                 autoComplete="new-password"
               />
             </div>
-            <button className="btn bnt-primary">Actualizar</button>
+            <button className="btn bnt-primary" disabled={loadingUpdate}>
+              {loadingUpdate ? "Cargando..." : "Actualizar"}
+            </button>
           </form>
         </div>
         <div className={classes.profile__orders}>
