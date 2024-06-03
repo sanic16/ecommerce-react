@@ -1,6 +1,6 @@
 import classes from "./profile.module.css";
 import Heading from "../../components/heading/Heading";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useGetMyOrdersQuery } from "../../store/slices/ordersApiSlice";
 import { useUpdateProfileMutation } from "../../store/slices/authApiSlice";
@@ -13,16 +13,28 @@ import { setCredentials } from "../../store/slices/authSlice";
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
+
+  const [userData, setUserData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
   const { userInfo } = useSelector(
     (state: { auth: { userInfo: Auth } }) => state.auth
   );
 
-  const [userData, setUserData] = useState({
-    name: userInfo?.name,
-    email: userInfo?.email,
-    password: "",
-    confirmPassword: "",
-  });
+  useEffect(() => {
+    if (userInfo) {
+      setUserData({
+        name: userInfo.name,
+        email: userInfo.email,
+        password: "",
+        confirmPassword: "",
+      });
+    }
+  }, [userInfo]);
 
   const [updateProfile, { isLoading: loadingUpdate }] =
     useUpdateProfileMutation();
