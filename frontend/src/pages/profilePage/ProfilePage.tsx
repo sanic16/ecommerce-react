@@ -10,6 +10,7 @@ import { FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { setCredentials } from "../../store/slices/authSlice";
+import Meta from "../../components/meta/Meta";
 
 const ProfilePage = () => {
   const dispatch = useDispatch();
@@ -68,6 +69,7 @@ const ProfilePage = () => {
 
   return (
     <section className={classes.profile}>
+      <Meta title="Perfil" />
       <Heading>Mi perfil</Heading>
       <div className={classes.profile__container}>
         <div className={classes.profile__info}>

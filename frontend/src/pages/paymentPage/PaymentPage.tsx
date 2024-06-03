@@ -4,6 +4,7 @@ import classes from "./paymentPage.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { savePaymentMethod } from "../../store/slices/cartSlice";
+import Meta from "../../components/meta/Meta";
 
 const PaymentPage = () => {
   const dispatch = useDispatch();
@@ -38,6 +39,7 @@ const PaymentPage = () => {
 
   return (
     <section className={classes.payment}>
+      <Meta title="Coral y Mar | Método de pago" />
       <CheckoutSteps step1 step2 />
       <div className={classes.payment__container}>
         <div className={classes.form__container}>

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import classes from "./shippingPage.module.css";
 import { toast } from "react-toastify";
 import CheckoutSteps from "../../components/checkoutSteps/CheckoutSteps";
+import Meta from "../../components/meta/Meta";
 
 const ShippingPage = () => {
   const dispatch = useDispatch();
@@ -49,6 +50,7 @@ const ShippingPage = () => {
 
   return (
     <section className={classes.shipping}>
+      <Meta title="Coral y Mar | Envío" />
       <CheckoutSteps step1 />
       <div className={classes.shipping__container}>
         <div className={classes.form__container}>

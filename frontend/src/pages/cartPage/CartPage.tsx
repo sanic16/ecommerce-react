@@ -8,6 +8,7 @@ import CartItem from "./CartItem";
 import CartSummary from "./CartSummary";
 import Heading from "../../components/heading/Heading";
 import { useEffect } from "react";
+import Meta from "../../components/meta/Meta";
 
 const CartPage = () => {
   const navigate = useNavigate();
@@ -36,6 +37,7 @@ const CartPage = () => {
 
   return (
     <section className={classes.cart} id="cart">
+      <Meta title="Coral y Mar | Carrito" />
       <div className={classes.cart__container}>
         <Heading>Carrito de compras</Heading>
         {cartItems.length === 0 ? (

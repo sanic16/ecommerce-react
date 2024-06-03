@@ -8,6 +8,7 @@ import Summary from "../../components/summary/Summary";
 import ProductsList from "../../components/productsList/ProductsList";
 import Heading from "../../components/heading/Heading";
 import { useEffect } from "react";
+import Meta from "../../components/meta/Meta";
 
 const OrderPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -22,6 +23,7 @@ const OrderPage = () => {
 
   return (
     <section>
+      <Meta title="Coral y Mar | Orden" />
       {isLoading ? (
         <Loader />
       ) : isError || !order ? (

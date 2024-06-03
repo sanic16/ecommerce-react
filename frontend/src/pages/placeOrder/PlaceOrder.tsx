@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { clearCartItems } from "../../store/slices/cartSlice";
 import Summary from "../../components/summary/Summary";
 import ProductsList from "../../components/productsList/ProductsList";
+import Meta from "../../components/meta/Meta";
 
 const PlaceOrder = () => {
   const cart = useSelector((state: { cart: CartState }) => state.cart);
@@ -64,6 +65,7 @@ const PlaceOrder = () => {
 
   return (
     <section className={classes.placerOrder}>
+      <Meta title="Coral y Mar | Realizar pedido" />
       <CheckoutSteps step1 step2 step3 />
       <div className={classes.placerOrder__container}>
         <div className={classes.info}>

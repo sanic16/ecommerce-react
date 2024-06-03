@@ -7,8 +7,8 @@ const Meta = ({
   image,
 }: {
   title: string;
-  description: string;
-  keywords: string;
+  description?: string;
+  keywords?: string;
   image?: string;
 }) => {
   return (
@@ -22,6 +22,7 @@ const Meta = ({
       {image && (
         <>
           <meta property="og:image" content={image} />
+          <meta property="og:url" content={image} />
           <meta property="twitter:image" content={image} />
         </>
       )}
