@@ -6,6 +6,7 @@ import classes from "./cartPage.module.css";
 import Message from "../../components/message/Message";
 import CartItem from "./CartItem";
 import CartSummary from "./CartSummary";
+import Heading from "../../components/heading/Heading";
 
 const CartPage = () => {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ const CartPage = () => {
   return (
     <section className={classes.cart} id="cart">
       <div className={classes.cart__container}>
-        <h2 className={classes.heading__page}>Carrito de compras</h2>
+        <Heading>Carrito de compras</Heading>
         {cartItems.length === 0 ? (
           <>
             <Message text="Tu carrito está vació" variant="danger" />

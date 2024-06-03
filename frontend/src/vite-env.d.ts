@@ -22,12 +22,13 @@ type ProductCard = Pick<
   "_id" | "name" | "image" | "price" | "rating" | "numReviews"
 >;
 
-type Auth = {
+type UserInfo = {
   _id: string;
   name: string;
   email: string;
   isAdmin: boolean;
-} | null;
+};
+type Auth = UserInfo | null;
 
 type LoginUser = {
   email: string;
