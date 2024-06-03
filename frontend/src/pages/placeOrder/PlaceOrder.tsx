@@ -26,6 +26,13 @@ const PlaceOrder = () => {
     }
   }, [cart, navigate]);
 
+  useEffect(() => {
+    const body = document.querySelector("body") as HTMLElement;
+    body.scrollIntoView({
+      behavior: "smooth",
+    });
+  }, []);
+
   const [createOrder, { isLoading }] = useCreateOrderMutation();
 
   const placeOrderHandler = async () => {

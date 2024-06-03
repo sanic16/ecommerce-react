@@ -8,6 +8,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { createRoutesFromElements } from "react-router-dom";
 import { Route } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 
 import HomePage from "./pages/homePage/HomePage.tsx";
 import store from "./store/store.ts";
@@ -45,17 +46,19 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <Provider store={store}>
-      <PayPalScriptProvider
-        deferLoading={true}
-        options={{
-          currency: "USD",
-          clientId:
-            "AZC524MOkkDcqS8mBmzHCGR1zwQFVGiyyR8QkgGFHIwFTI3ISBBe53LRpiyQBVvpw6mgMrYmWWO8iIv0",
-        }}
-      >
-        <RouterProvider router={router} />
-      </PayPalScriptProvider>
-    </Provider>
+    <HelmetProvider>
+      <Provider store={store}>
+        <PayPalScriptProvider
+          deferLoading={true}
+          options={{
+            currency: "USD",
+            clientId:
+              "AZC524MOkkDcqS8mBmzHCGR1zwQFVGiyyR8QkgGFHIwFTI3ISBBe53LRpiyQBVvpw6mgMrYmWWO8iIv0",
+          }}
+        >
+          <RouterProvider router={router} />
+        </PayPalScriptProvider>
+      </Provider>
+    </HelmetProvider>
   </React.StrictMode>
 );

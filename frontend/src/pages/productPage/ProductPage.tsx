@@ -7,6 +7,7 @@ import Loader from "../../components/loader/Loader";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../store/slices/cartSlice";
+import Meta from "../../components/meta/Meta";
 
 const ProductPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -22,7 +23,7 @@ const ProductPage = () => {
     body.scrollIntoView({
       behavior: "smooth",
     });
-  });
+  }, []);
 
   const addToCartHandler = () => {
     if (!product) return;
@@ -36,6 +37,14 @@ const ProductPage = () => {
   };
   return (
     <section id="detail" className={classes.product}>
+      {product && (
+        <Meta
+          title={product.name}
+          description={product.description}
+          keywords={`${product.name} ${product.category} ${product.price}`}
+          image={product.image}
+        />
+      )}
       <div className={classes.product__wrapper}>
         <Link to="/" className="btn">
           Volver

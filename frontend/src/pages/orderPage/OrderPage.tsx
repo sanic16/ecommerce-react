@@ -7,10 +7,18 @@ import classes from "./orderPage.module.css";
 import Summary from "../../components/summary/Summary";
 import ProductsList from "../../components/productsList/ProductsList";
 import Heading from "../../components/heading/Heading";
+import { useEffect } from "react";
 
 const OrderPage = () => {
   const { id } = useParams<{ id: string }>();
   const { data: order, isLoading, isError } = useGetOrderDetailsQuery(id!);
+
+  useEffect(() => {
+    const body = document.querySelector("body") as HTMLElement;
+    body.scrollIntoView({
+      behavior: "smooth",
+    });
+  }, []);
 
   return (
     <section>

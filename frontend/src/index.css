@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Ribeye+Marrow&family=Zilla+Slab+Highlight:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 :root {
-  --primary-hue: 100;
+  --primary-hue: 220;
   --secondary-hue: 55;
   --white-lightness: 8%;
   --light-lightness: 16%;
@@ -41,6 +41,8 @@
 
 html {
   scroll-behavior: smooth;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 body {
@@ -48,6 +50,8 @@ body {
   line-height: 1.6rem;
   background-color: var(--white-color);
   color: var(--dark-color);
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 .theme {

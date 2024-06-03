@@ -7,6 +7,7 @@ import Message from "../../components/message/Message";
 import CartItem from "./CartItem";
 import CartSummary from "./CartSummary";
 import Heading from "../../components/heading/Heading";
+import { useEffect } from "react";
 
 const CartPage = () => {
   const navigate = useNavigate();
@@ -25,6 +26,14 @@ const CartPage = () => {
   const checkoutHandler = () => {
     navigate("/login?redirect=/shipping");
   };
+
+  useEffect(() => {
+    const body = document.querySelector("body") as HTMLElement;
+    body.scrollIntoView({
+      behavior: "smooth",
+    });
+  }, []);
+
   return (
     <section className={classes.cart} id="cart">
       <div className={classes.cart__container}>
