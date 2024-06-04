@@ -5,12 +5,20 @@ import classes from "./homePage.module.css";
 import Meta from "../../components/meta/Meta";
 import ProductCarousel from "../../components/ProductCarousel/ProductCarousel";
 import Pagination from "../../components/pagination/Pagination";
+import { useEffect } from "react";
 const HomePage = () => {
   const { pageNumber } = useParams<{ pageNumber: string }>();
   console.log("pageNumber", pageNumber);
   const { data, isLoading, isError } = useGetProductsQuery({
     pageNumber: Number(pageNumber) || 1,
   });
+
+  useEffect(() => {
+    const body = document.querySelector("body") as HTMLElement;
+    body.scrollIntoView({
+      behavior: "smooth",
+    });
+  }, []);
 
   return (
     <section>
