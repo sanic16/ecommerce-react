@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 const ProductCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
-  const [isHovering, setIsHovering] = useState(false);
+  const [isHovering] = useState(false);
   const interval = useRef<NodeJS.Timeout | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
 
