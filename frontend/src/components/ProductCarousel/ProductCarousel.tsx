@@ -34,7 +34,7 @@ const ProductCarousel = () => {
     if (isPlaying) {
       interval.current = setInterval(() => {
         nextSlide();
-      }, 5000);
+      }, 15000);
     } else {
       clearInterval(interval.current!);
     }
@@ -60,7 +60,13 @@ const ProductCarousel = () => {
                     </div>
                     <div className={classes.slide__content}>
                       <Link to={`/product/${product._id}`}>
-                        <h2>{product.name}</h2>
+                        <h2>
+                          {window.innerWidth < 768
+                            ? product.name.length > 25
+                              ? product.name.substring(0, 25) + "..."
+                              : product.name
+                            : product.name}
+                        </h2>
                       </Link>
                       <div className={classes.slide__info}>
                         <p>
