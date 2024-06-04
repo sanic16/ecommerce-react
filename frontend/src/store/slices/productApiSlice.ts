@@ -18,7 +18,18 @@ const productsApiSlice = apiSlice.injectEndpoints({
       //   { type: "Products", id: id },
       // ],
     }),
+    getTopProducts: builder.query<Product[], void>({
+      query: () => ({
+        url: `${PRODUCTS_URL}/top`,
+        method: "GET",
+      }),
+      providesTags: ["TopProducts"],
+    }),
   }),
 });
 
-export const { useGetProductsQuery, useGetProductQuery } = productsApiSlice;
+export const {
+  useGetProductsQuery,
+  useGetProductQuery,
+  useGetTopProductsQuery,
+} = productsApiSlice;
