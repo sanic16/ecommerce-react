@@ -79,7 +79,12 @@ const ProductCarousel = () => {
                             ? product.description.substring(0, 150) + "..."
                             : product.description}
                         </p>
-                        <p>Precio: Q{product.price}</p>
+                        <Link
+                          className="btn secondary"
+                          to={`/product/${product._id}`}
+                        >
+                          Precio: Q{product.price}
+                        </Link>
                       </div>
                     </div>
                   </div>
