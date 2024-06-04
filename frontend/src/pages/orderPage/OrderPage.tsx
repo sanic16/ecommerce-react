@@ -19,7 +19,7 @@ const OrderPage = () => {
     body.scrollIntoView({
       behavior: "smooth",
     });
-  }, []);
+  }, [id]);
 
   return (
     <section>
