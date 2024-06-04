@@ -18,9 +18,14 @@ const productModel_1 = __importDefault(require("../models/productModel"));
 // @desc    Fetch all products
 // @route   GET /api/products
 // @access  Public
-exports.getProducts = (0, asyncHandler_1.default)((_req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const products = yield productModel_1.default.find({});
-    res.json(products);
+exports.getProducts = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const pageSize = 5;
+    const page = Number(req.query.pageNumber) || 1;
+    const count = yield productModel_1.default.countDocuments();
+    const products = yield productModel_1.default.find({})
+        .limit(pageSize)
+        .skip(pageSize * (page - 1));
+    res.json({ products, page: page, pages: Math.ceil(count / pageSize) });
 }));
 // @desc    Fetch single product
 // @route   GET /api/products/:id

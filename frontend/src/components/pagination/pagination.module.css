@@ -1,0 +1,36 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.pagination .page__number {
+  color: #fff;
+  background-color: var(--primary-color);
+  width: 1.5rem;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--border-radius-1);
+  transition: var(--transition);
+}
+
+.page__number.active {
+  background-color: var(--black-color);
+  color: var(--white-color);
+  transition: var(--transition);
+}
+
+.page__control {
+  color: var(--black-color);
+  font-weight: 900;
+  width: 1.5rem;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: var(--transition);
+}

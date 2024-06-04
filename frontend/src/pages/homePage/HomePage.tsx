@@ -1,10 +1,16 @@
 import { useGetProductsQuery } from "../../store/slices/productApiSlice";
+import { useParams } from "react-router-dom";
 import Product from "../../components/product/Product";
 import classes from "./homePage.module.css";
 import Meta from "../../components/meta/Meta";
 import ProductCarousel from "../../components/ProductCarousel/ProductCarousel";
+import Pagination from "../../components/pagination/Pagination";
 const HomePage = () => {
-  const { data: products, isLoading, isError } = useGetProductsQuery();
+  const { pageNumber } = useParams<{ pageNumber: string }>();
+  console.log("pageNumber", pageNumber);
+  const { data, isLoading, isError } = useGetProductsQuery({
+    pageNumber: Number(pageNumber) || 1,
+  });
 
   return (
     <section>
@@ -16,13 +22,16 @@ const HomePage = () => {
       <ProductCarousel />
       {isLoading ? (
         <p>Cargando...</p>
-      ) : isError || !products ? (
+      ) : isError || !data ? (
         <p>Error al cargar los productos</p>
       ) : (
-        <div className={classes.products}>
-          {products.map((product) => (
-            <Product key={product._id} product={product} />
-          ))}
+        <div>
+          <div className={classes.products}>
+            {data?.products.map((product) => (
+              <Product key={product._id} product={product} />
+            ))}
+          </div>
+          <Pagination page={data.page} pages={data.pages} />
         </div>
       )}
     </section>

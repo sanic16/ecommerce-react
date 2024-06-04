@@ -57,11 +57,11 @@ const products = [
         numReviews: 10,
     },
     {
-        name: "Amazon Echo Dot 3rd Generation",
+        name: "Pez Betta",
         image: "https://proshop-gt.s3.amazonaws.com/public/products/bettaFish.jpg", // '/images/alexa.jpg
-        description: "Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space",
-        brand: "Amazon",
-        category: "Electronics",
+        description: "El pez betta es un pez de agua dulce, fácil de cuidar y alimentar. Ideal para acuarios pequeños y medianos.",
+        brand: "Betta",
+        category: "Especiales",
         price: 29.99,
         countInStock: 0,
         rating: 4,

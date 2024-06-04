@@ -5,12 +5,17 @@ import Product from "../models/productModel";
 // @desc    Fetch all products
 // @route   GET /api/products
 // @access  Public
-export const getProducts = asyncHandler(
-  async (_req: Request, res: Response) => {
-    const products = await Product.find({});
-    res.json(products);
-  }
-);
+export const getProducts = asyncHandler(async (req: Request, res: Response) => {
+  const pageSize = 5;
+  const page = Number(req.query.pageNumber) || 1;
+  const count = await Product.countDocuments();
+
+  const products = await Product.find({})
+    .limit(pageSize)
+    .skip(pageSize * (page - 1));
+
+  res.json({ products, page: page, pages: Math.ceil(count / pageSize) });
+});
 
 // @desc    Fetch single product
 // @route   GET /api/products/:id

@@ -8,6 +8,7 @@
   box-shadow: 0 0 0.5rem
     hsla(var(--primary-hue), 0%, var(--dark-lightness), 0.5);
   background-color: var(--light-color);
+  transition: var(--transition);
 }
 
 .slideshow__wrapper {
@@ -60,16 +61,12 @@
   text-align: center;
   padding: 1rem;
   color: #fff;
-  background-color: hsla(var(--primary-hue), 88%, 42%, 0.5);
+  background-color: hsla(var(--primary-hue), 88%, 42%, 0.3);
+  transition: var(--transition);
 }
 
 .slide__content h2 {
-  background: linear-gradient(to right, var(--white-color), var(--light-color));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-  /* color: #fff; */
+  color: #fff;
   line-height: normal;
 }
 
@@ -81,6 +78,7 @@
   background-color: var(--primary-color);
   padding: 1rem;
   border-radius: var(--border-radius-1);
+  transition: var(--transition);
 }
 
 .slide__info p:first-child {
