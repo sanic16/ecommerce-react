@@ -2,8 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const productController_1 = require("../controllers/productController");
+const authMiddlware_1 = require("../middleware/authMiddlware");
 const router = (0, express_1.Router)();
 router.get("/", productController_1.getProducts);
 router.get("/top", productController_1.getTopProducts);
 router.get("/:id", productController_1.getProductById);
+router.post("/:id/reviews", authMiddlware_1.protect, productController_1.createProductReview);
 exports.default = router;

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-interface Review {
+interface Review extends mongoose.Document {
   user: mongoose.Schema.Types.ObjectId;
   name: string;
   rating: number;

@@ -7,10 +7,13 @@ import ProductCarousel from "../../components/ProductCarousel/ProductCarousel";
 import Pagination from "../../components/pagination/Pagination";
 import { useEffect } from "react";
 const HomePage = () => {
-  const { pageNumber } = useParams<{ pageNumber: string }>();
-  console.log("pageNumber", pageNumber);
+  const { pageNumber, search } = useParams<{
+    pageNumber: string;
+    search: string;
+  }>();
   const { data, isLoading, isError } = useGetProductsQuery({
     pageNumber: Number(pageNumber) || 1,
+    keyword: search || "",
   });
 
   useEffect(() => {
@@ -19,9 +22,12 @@ const HomePage = () => {
       behavior: "smooth",
     });
   }, []);
+  const path = search ? `search/${search}/page` : `page`;
 
+  console.log("path", path);
+  console.log("search", search);
   return (
-    <section>
+    <section id="home">
       <Meta
         title="Coral y Mar | Inicio"
         description="Productos de la mejor calidad"
@@ -39,7 +45,7 @@ const HomePage = () => {
               <Product key={product._id} product={product} />
             ))}
           </div>
-          <Pagination page={data.page} pages={data.pages} />
+          <Pagination page={data.page} pages={data.pages} path={path} />
         </div>
       )}
     </section>

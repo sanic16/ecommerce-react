@@ -8,7 +8,15 @@ type Product = {
   brand: string;
   category: string;
   description: string;
-  reviews: string[];
+  reviews: {
+    user: string;
+    name: string;
+    rating: number;
+    comment: string;
+    _id: string;
+    createdAt: string;
+    updatedAt: string;
+  }[];
   rating: number;
   numReviews: number;
   price: number;

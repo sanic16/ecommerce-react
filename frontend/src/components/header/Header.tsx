@@ -7,6 +7,7 @@ import { logout } from "../../store/slices/authSlice";
 import { toast } from "react-toastify";
 import { IoColorWand } from "react-icons/io5";
 import { useState } from "react";
+import SearchBox from "../searchBox/SearchBox";
 
 const Header = () => {
   const { cartItems } = useSelector((state: { cart: CartState }) => state.cart);
@@ -35,11 +36,14 @@ const Header = () => {
   };
 
   return (
-    <nav className={classes.nav} id="top">
+    <nav className={classes.nav} id="nav">
       <div className={`container ${classes.nav__container}`}>
         <div className={classes.nav__logo}>
           <Link to="/">Coral y Mar</Link>
         </div>
+
+        <SearchBox />
+
         <ul className={`${classes.nav__menu} ${isOpened && classes.active}`}>
           <li>
             <button className={classes.nav__theme}>

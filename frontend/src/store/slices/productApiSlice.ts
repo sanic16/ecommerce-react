@@ -5,11 +5,11 @@ const productsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getProducts: builder.query<
       { products: Product[]; page: number; pages: number },
-      { pageNumber: number }
+      { pageNumber: number; keyword?: string }
     >({
-      query: ({ pageNumber }) => ({
+      query: ({ pageNumber, keyword }) => ({
         url: PRODUCTS_URL,
-        params: { pageNumber },
+        params: { pageNumber, keyword },
       }),
       providesTags: ["Products"],
     }),
@@ -17,10 +17,10 @@ const productsApiSlice = apiSlice.injectEndpoints({
       query: (id) => ({
         url: `${PRODUCTS_URL}/${id}`,
       }),
-      // providesTags: (_result, _error, id) => [
-      //   { type: "Products", id: "LIST" },
-      //   { type: "Products", id: id },
-      // ],
+      providesTags: (_result, _error, id) => [
+        { type: "Products", id: "LIST" },
+        { type: "Products", id: id },
+      ],
     }),
     getTopProducts: builder.query<Product[], void>({
       query: () => ({
@@ -29,6 +29,17 @@ const productsApiSlice = apiSlice.injectEndpoints({
       }),
       providesTags: ["TopProducts"],
     }),
+    createProductReview: builder.mutation<
+      { message: string },
+      { rating: number; comment: string; id: string }
+    >({
+      query: ({ id, comment, rating }) => ({
+        url: `${PRODUCTS_URL}/${id}/reviews`,
+        method: "POST",
+        body: { comment, rating },
+      }),
+      invalidatesTags: ["Products"],
+    }),
   }),
 });
 
@@ -36,4 +47,5 @@ export const {
   useGetProductsQuery,
   useGetProductQuery,
   useGetTopProductsQuery,
+  useCreateProductReviewMutation,
 } = productsApiSlice;
