@@ -21,7 +21,7 @@ const mongoose_1 = __importDefault(require("mongoose"));
 // @route   GET /api/products
 // @access  Public
 exports.getProducts = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const pageSize = 1;
+    const pageSize = 10;
     const page = Number(req.query.pageNumber) || 1;
     const keyword = req.query.keyword
         ? {

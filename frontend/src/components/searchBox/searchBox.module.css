@@ -1,0 +1,28 @@
+.search {
+  position: relative;
+  width: 25rem;
+}
+
+.search input {
+  width: 100%;
+  border-radius: var(--border-radius-4);
+}
+
+.search button {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--black-color);
+  font-weight: 700;
+  display: flex;
+  background-color: transparent;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .search {
+    width: 100%;
+  }
+}

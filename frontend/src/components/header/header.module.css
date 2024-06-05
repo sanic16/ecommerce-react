@@ -117,8 +117,16 @@
   }
 }
 
-@media screen and (max-height: 600px) {
+@media screen and (max-width: 600px) {
   .nav__menu {
     padding-top: 1rem;
+  }
+
+  .nav__container {
+    gap: 1rem;
+  }
+
+  .nav__logo a {
+    font-size: 1.2rem;
   }
 }

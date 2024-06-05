@@ -11,7 +11,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../store/slices/cartSlice";
 import Meta from "../../components/meta/Meta";
-import { toast } from "react-toastify";
+import UserComment from "./userComment/UserComment";
 
 const ProductPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -19,8 +19,6 @@ const ProductPage = () => {
   const dispatch = useDispatch();
 
   const [qty, setQty] = useState(1);
-  const [rating, setRating] = useState(0);
-  const [comment, setComment] = useState("");
 
   const { userInfo } = useSelector(
     (state: { auth: { userInfo: Auth } }) => state.auth
@@ -46,24 +44,6 @@ const ProductPage = () => {
       })
     );
     navigate("/cart");
-  };
-
-  const reviewHandler = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!product) return;
-    console.log(comment, rating);
-    try {
-      await createReview({
-        id: product._id,
-        comment: comment,
-        rating: rating,
-      }).unwrap();
-      setRating(0);
-      setComment("");
-      toast.success("Opinión enviada");
-    } catch (error) {
-      toast.error("Error al enviar la opinión");
-    }
   };
 
   return (
@@ -147,61 +127,13 @@ const ProductPage = () => {
                 </div>
               </div>
             </div>
-            <div className={classes.reviews}>
-              <h2>{product.reviews.length} Opiniones</h2>
-              {product.reviews.length === 0 && <p>Sin opiniones</p>}
-              {product.reviews.length > 0 && (
-                <div>
-                  {product.reviews.map((review) => (
-                    <div key={review._id} className={classes.review}>
-                      <strong>{review.name}</strong>
-                      <p>{review.rating} </p>
-                      <p>{review.createdAt?.substring(0, 10)}</p>
-                      <p>{review.comment}</p>
-                    </div>
-                  ))}
-                </div>
-              )}
-              {userInfo ? (
-                <div>
-                  <h3>Califica este producto</h3>
-                  <form onSubmit={reviewHandler}>
-                    <div>
-                      <label htmlFor="rating">Calificación</label>
-                      <select
-                        id="rating"
-                        value={rating}
-                        onChange={(e) => setRating(parseInt(e.target.value))}
-                      >
-                        <option value="1">1 - Malo</option>
-                        <option value="2">2 - Regular</option>
-                        <option value="3">3 - Bueno</option>
-                        <option value="4">4 - Muy bueno</option>
-                        <option value="5">5 - Excelente</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label htmlFor="comment">Comentario</label>
-                      <textarea
-                        id="comment"
-                        value={comment}
-                        onChange={(e) => setComment(e.target.value)}
-                      ></textarea>
-                    </div>
-                    <button className="btn" disabled={isReviewLoading}>
-                      {isReviewLoading ? "Enviando..." : "Enviar"}
-                    </button>
-                  </form>
-                </div>
-              ) : (
-                <p>
-                  <Link to={`/login?redirect=/product/${product._id}`}>
-                    Inicia sesión
-                  </Link>{" "}
-                  para dejar una opinión
-                </p>
-              )}
-            </div>
+            <UserComment
+              productId={product._id}
+              isReviewLoading={isReviewLoading}
+              createReview={createReview}
+              reviews={product.reviews}
+              userInfo={userInfo}
+            />
           </>
         )}
       </div>

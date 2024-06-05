@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import classes from "./searchBox.module.css";
 import React, { useState } from "react";
-import { FaSearch } from "react-icons/fa";
+import { CiSearch } from "react-icons/ci";
 
 const SearchBox = () => {
   const navigate = useNavigate();
@@ -26,8 +26,8 @@ const SearchBox = () => {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
-      <button type="submit" className="btn btn-primary">
-        <FaSearch />
+      <button type="submit">
+        <CiSearch />
       </button>
     </form>
   );
