@@ -17,12 +17,13 @@ const HomePage = () => {
     keyword: search || "",
   });
 
+  const up = search && pageNumber;
   useEffect(() => {
     const body = document.querySelector("body") as HTMLElement;
     body.scrollIntoView({
       behavior: "smooth",
     });
-  }, [search, pageNumber]);
+  }, [search, up]);
   const path = search ? `search/${search}/page` : `page`;
 
   return (

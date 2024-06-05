@@ -11,7 +11,7 @@ const SearchBox = () => {
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (search.trim()) {
-      navigate(`/search/${search}/page/1`);
+      navigate(`/search/${search}`);
     } else {
       navigate("/");
     }
