@@ -15,6 +15,7 @@ const SearchBox = () => {
     } else {
       navigate("/");
     }
+    setSearch("");
   };
 
   return (

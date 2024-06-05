@@ -1,11 +1,12 @@
 import { useGetProductsQuery } from "../../store/slices/productApiSlice";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Product from "../../components/product/Product";
 import classes from "./homePage.module.css";
 import Meta from "../../components/meta/Meta";
 import ProductCarousel from "../../components/ProductCarousel/ProductCarousel";
 import Pagination from "../../components/pagination/Pagination";
 import { useEffect } from "react";
+import Heading from "../../components/heading/Heading";
 const HomePage = () => {
   const { pageNumber, search } = useParams<{
     pageNumber: string;
@@ -21,11 +22,9 @@ const HomePage = () => {
     body.scrollIntoView({
       behavior: "smooth",
     });
-  }, []);
+  }, [search, pageNumber]);
   const path = search ? `search/${search}/page` : `page`;
 
-  console.log("path", path);
-  console.log("search", search);
   return (
     <section id="home">
       <Meta
@@ -33,11 +32,21 @@ const HomePage = () => {
         description="Productos de la mejor calidad"
         keywords="acuarios, peces, alimentos, corales, insumos"
       />
-      <ProductCarousel />
+      {!search ? (
+        <ProductCarousel />
+      ) : (
+        <Link
+          to="/"
+          className="btn btn-primary"
+          style={{ marginBottom: "2rem" }}
+        >
+          Regresar
+        </Link>
+      )}
       {isLoading ? (
-        <p>Cargando...</p>
-      ) : isError || !data ? (
-        <p>Error al cargar los productos</p>
+        <h1>Cargando...</h1>
+      ) : isError || !data || data.products.length === 0 ? (
+        <Heading>No hay resultados</Heading>
       ) : (
         <div>
           <div className={classes.products}>

@@ -30,17 +30,18 @@ const router = createBrowserRouter(
       <Route index path="/" element={<HomePage />} />
       <Route path="/page/:pageNumber" element={<HomePage />} />
       <Route path="/search/:search/page/:pageNumber" element={<HomePage />} />
+      <Route path="/search/:search" element={<HomePage />} />
       <Route path="/product/:id" element={<ProductPage />} />
       <Route path="/cart" element={<CartPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
-      <Route path="/order/:id" element={<OrderPage />} />
 
       <Route path="/" element={<PrivateRoot />}>
         <Route path="/shipping" element={<ShippingPage />} />
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/placeorder" element={<PlaceOrder />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/order/:id" element={<OrderPage />} />
       </Route>
     </Route>
   )

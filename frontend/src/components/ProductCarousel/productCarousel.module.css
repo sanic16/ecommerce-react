@@ -33,6 +33,13 @@
   animation: slide 1s ease;
 }
 
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
 @keyframes slide {
   0% {
     opacity: 0;

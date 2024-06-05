@@ -35,7 +35,7 @@ exports.getProducts = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0
     const products = yield productModel_1.default.find(Object.assign({}, keyword))
         .limit(pageSize)
         .skip(pageSize * (page - 1));
-    res.json({ products, page: page, pages: Math.ceil(count / pageSize) });
+    return res.json({ products, page: page, pages: Math.ceil(count / pageSize) });
 }));
 // @desc    Fetch single product
 // @route   GET /api/products/:id

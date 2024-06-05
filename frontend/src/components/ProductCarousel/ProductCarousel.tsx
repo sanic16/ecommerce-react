@@ -47,7 +47,9 @@ const ProductCarousel = () => {
       <div className={classes.slideshow__wrapper}>
         <div className={classes.slides}>
           {isLoading ? (
-            <Loader />
+            <div className={classes.loader}>
+              <Loader />
+            </div>
           ) : isError || !products ? (
             <p></p>
           ) : (
