@@ -54,6 +54,7 @@ const LoginPage = () => {
           name: res.name,
           email: res.email,
           isAdmin: res.isAdmin,
+          exp: res.exp,
         })
       );
       toast.success("Sesión iniciada con éxito");

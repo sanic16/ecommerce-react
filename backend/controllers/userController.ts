@@ -14,11 +14,13 @@ export const loginUser = asyncHandler(async (req: Request, res: Response) => {
 
   if (user && (await user.matchPassword(password))) {
     generateToken(res, user._id as string);
+    const expirationTime = Math.floor(Date.now() / 1000) + 60 * 60 * 8;
     return res.json({
       _id: user._id,
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
+      exp: expirationTime,
     });
   } else {
     res.status(401);
@@ -46,12 +48,14 @@ export const registerUser = asyncHandler(
     });
 
     if (user) {
+      const expirationTime = Math.floor(Date.now() / 1000) + 60 * 60 * 8;
       generateToken(res, user._id as string);
       res.status(201).json({
         _id: user._id,
         name: user.name,
         email: user.email,
         isAdmin: user.isAdmin,
+        exp: expirationTime,
       });
     } else {
       res.status(400);

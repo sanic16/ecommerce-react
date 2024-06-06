@@ -26,11 +26,13 @@ exports.loginUser = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, 
     });
     if (user && (yield user.matchPassword(password))) {
         (0, generateToken_1.default)(res, user._id);
+        const expirationTime = Math.floor(Date.now() / 1000) + 60 * 60 * 8;
         return res.json({
             _id: user._id,
             name: user.name,
             email: user.email,
             isAdmin: user.isAdmin,
+            exp: expirationTime,
         });
     }
     else {
@@ -54,12 +56,14 @@ exports.registerUser = (0, asyncHandler_1.default)((req, res) => __awaiter(void 
         password,
     });
     if (user) {
+        const expirationTime = Math.floor(Date.now() / 1000) + 60 * 60 * 8;
         (0, generateToken_1.default)(res, user._id);
         res.status(201).json({
             _id: user._id,
             name: user.name,
             email: user.email,
             isAdmin: user.isAdmin,
+            exp: expirationTime,
         });
     }
     else {

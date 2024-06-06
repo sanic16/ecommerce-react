@@ -69,6 +69,7 @@ const RegisterPage = () => {
           name: res.name,
           email: res.email,
           isAdmin: res.isAdmin,
+          exp: res.exp,
         })
       );
       toast.success("Registrado con éxito!");

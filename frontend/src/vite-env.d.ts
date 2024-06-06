@@ -35,6 +35,7 @@ type UserInfo = {
   name: string;
   email: string;
   isAdmin: boolean;
+  exp: number;
 };
 type Auth = UserInfo | null;
 
