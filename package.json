@@ -9,6 +9,9 @@
     "build:prod": "rm -rf ./build && npm run build:server && npm run build:client",
     "start": "node ./build/index.js",
     "dev": "concurrently \"npx tsc -w\" \"nodemon ./build/index.js \" ",
+    "dev:server": "npx tsc -w",
+    "dev:client": "npm run dev --prefix frontend",
+    "dev:test": "concurrently \"npx tsc -w\" \"nodemon ./build/index.js \" \"npm run dev --prefix frontend\"",
     "data:import": "npm run build:server && node ./build/seeder.js",
     "data:destroy": "npm run build:server && node ./build/seeder.js -d"
   },
