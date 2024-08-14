@@ -14,11 +14,14 @@ Sigue estos pasos para instalar y configurar el proyecto localmente:
 
 1. **Clona el repositorio:**
 
-   ````bash
+   ```bash
    git clone https://github.com/sanic16/ecommerce-react
-   cd ecommerce-react```
+   cd ecommerce-react
+   ```
 
-   ````
-
-2. \*\*Instala las dependencias:
+2. **Instala las dependencias:**
    `npm i`
+
+3. **Configura las Variables de Entorno:**
+
+   Crea un archivo `.env` en la raíz del proyecto y copia el contenido del archivo `.env.example` en él. Luego, reemplaza los valores de las variables de entorno con los tuyos.
