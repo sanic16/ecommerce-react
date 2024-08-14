@@ -20,7 +20,10 @@ Sigue estos pasos para instalar y configurar el proyecto localmente:
    ```
 
 2. **Instala las dependencias:**
-   `npm i`
+
+   ```npm i
+
+   ```
 
 3. **Configura las Variables de Entorno:**
 
