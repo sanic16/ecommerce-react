@@ -21,10 +21,19 @@ Sigue estos pasos para instalar y configurar el proyecto localmente:
 
 2. **Instala las dependencias:**
 
-   ```npm i
-
+   ```bash
+   npm install
    ```
 
 3. **Configura las Variables de Entorno:**
 
    Crea un archivo `.env` en la raíz del proyecto y copia el contenido del archivo `.env.example` en él. Luego, reemplaza los valores de las variables de entorno con los tuyos.
+
+   ```bash
+    NODE_ENV=development
+   PORT=8000
+   MONGO_URI=tu_mongo_uri_aqui
+   JWT_SECRET=tu_secreto_jwt
+   PAYPAL_CLIENT_ID=tu_paypal_client_id
+
+   ```
